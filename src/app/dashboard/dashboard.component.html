@@ -1,0 +1,147 @@
+<section id="content">
+    <!-- MAIN -->
+    <main>
+        <div class="head-title">
+            <div class="left">
+                <h1>Dashboard</h1>
+                <!-- <ul class="breadcrumb">
+                    <li>
+                        <a >Dashboard</a>
+                    </li>
+                    <li><fa-icon [icon]="faArrowRight"></fa-icon></li>
+                    <li>
+                        <a class="active">Home</a>
+                    </li>
+                </ul> -->
+            </div>
+            <!-- <a href="#" class="btn-download">
+                <i class='bx bxs-cloud-download' ></i>
+                <span class="text">Download PDF</span>
+            </a> -->
+        </div>
+
+        <ul class="box-info">
+            <li>
+                <fa-icon class="bx" [icon]="faCalendarCheck"></fa-icon>
+                <span class="text">
+                    <h3>{{ concludedTasksCount }}</h3>
+                    <p>Tarefas Concluídas</p>
+                </span>
+            </li>
+            <li>
+                <fa-icon class="bx" [icon]="faCalendarXmark"></fa-icon>
+                <span class="text">
+                    <h3>{{ todoTasksCount }}</h3>
+                    <p>Tarefas A fazer</p>
+                </span>
+            </li>
+            <li>
+                <fa-icon class="bx" [icon]="faCalendarCheck"></fa-icon>
+                <span class="text">
+                    <h3>{{ concludedTasksCount + todoTasksCount }}</h3>
+                    <p>Total de Tarefas</p>
+                </span>
+            </li>
+        </ul>
+
+
+        <div class="table-data">
+            <div class="order">
+                <div class="head">
+                    <h3>Recent Orders</h3>
+                    <div class="filter">
+                        <div class="search-input">
+                            <input type="text" placeholder="Filtre pelo titulo..." id="titleFilter" [(ngModel)]="filterTitle" (ngModelChange)="applyFilters()">
+                            <fa-icon class="bx search-icon" [icon]="faSearch"></fa-icon>
+                        </div>
+                        <fa-icon class="bx" [icon]="faFilter"></fa-icon>
+                    </div>
+                </div>
+                <div class="filter">
+                    <label for="statusFilter">Filtrar por Status:</label>
+                    <select id="statusFilter" [(ngModel)]="filterStatus" (ngModelChange)="applyFilters()">
+                        <option value="">Todos</option>
+                        <option value="A fazer">A fazer</option>
+                        <option value="Concluída">Concluída</option>
+                    </select>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Titulo</th>
+                            <th>Date Order</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let task of filteredTasks">
+                            <td>
+                                <!-- <img src="img/people.png"> -->
+                                <p>{{ task.title }}</p>
+                            </td>
+                            <td>01-10-2021</td>
+                            <td>
+                                <span
+                                    [ngClass]="{'status': true, 'completed': task.status === 'Concluída', 'pending': task.status === 'A fazer'}">{{
+                                    task.status }}</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="todo">
+                <div class="head">
+                    <h3>Todos</h3>
+                    <fa-icon class="bx" [icon]="faPlus"></fa-icon>
+                    <fa-icon class="bx" [icon]="faFilter"></fa-icon>
+                </div>
+                <ul class="todo-list">
+                    <li class="completedd">
+                        <p>Todo List</p>
+                        <fa-icon class="bx" [icon]="faEllipsisVertical"></fa-icon>
+                    </li>
+                    <li class="completedd">
+                        <p>Todo List</p>
+                        <fa-icon class="bx" [icon]="faEllipsisVertical"></fa-icon>
+                    </li>
+                    <li class="not-completed">
+                        <p>Todo List</p>
+                        <fa-icon class="bx" [icon]="faEllipsisVertical"></fa-icon>
+                    </li>
+                    <li class="completedd">
+                        <p>Todo List</p>
+                        <fa-icon class="bx" [icon]="faEllipsisVertical"></fa-icon>
+                    </li>
+                    <li class="not-completed">
+                        <p>Todo List</p>
+                        <fa-icon class="bx" [icon]="faEllipsisVertical"></fa-icon>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- <div class="todo">
+            <div class="head">
+                <h3>Todos</h3>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let task of tasks">
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.status }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+    </main>
+    <!-- MAIN -->
+</section>

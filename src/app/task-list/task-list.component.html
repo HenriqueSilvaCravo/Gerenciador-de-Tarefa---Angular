@@ -1,0 +1,33 @@
+<div class="task-list">
+  <h1>Tarefas</h1>
+  <div class="task-card">
+    <div class="buttons-container">
+      <button (click)="clearAllTasks()" class="clear-all-button left-button"><fa-icon class="bx"
+          [icon]="faTrash"></fa-icon>
+      </button>
+      <button routerLink="/AdiconarTarefas" class="right-button btn"><fa-icon class="text" [icon]="faPlus"></fa-icon>
+        <a class="text">Nova Tarefa</a></button>
+    </div>
+    <!-- <h3>Task List</h3> -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks" [hidden]="task.hidden">
+          <td>{{ task.title }}</td>
+          <td>
+            <span
+              [ngClass]="{'status': true, 'completed': task.status === 'Concluída', 'pending': task.status === 'A fazer'}">{{
+              task.status }}</span>
+          </td>
+          <td><button (click)="deleteTask(task)" class="delete-button">Excluir</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
