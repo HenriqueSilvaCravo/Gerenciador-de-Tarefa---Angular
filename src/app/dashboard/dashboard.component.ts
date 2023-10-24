@@ -8,7 +8,7 @@ import { Task, TaskService } from '../task.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-
+ // dashboard
   faCalendarCheck = faCalendarCheck;
   faSearch = faSearch;
   faFilter = faFilter;
