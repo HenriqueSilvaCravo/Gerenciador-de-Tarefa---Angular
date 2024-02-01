@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class TaskAddComponent {
   tasks: Task[] = [];
   newTaskTitle: string = "";
+  newTaskDesc: string = "";
   newTaskStatus: string = "A fazer";
   faReply = faReply;
 
@@ -31,9 +32,11 @@ export class TaskAddComponent {
     if (this.newTaskTitle) {
       const newTask: Task = {
         title: this.newTaskTitle,
+        desc: this.newTaskDesc,
         completed: false,
         status: this.newTaskStatus,
-        hidden: false
+        hidden: false,
+        createdAt: new Date()
       };
 
       this.taskService.addTask(newTask);

@@ -2,7 +2,7 @@
   <h1>Tarefas</h1>
   <div class="task-card">
     <div class="buttons-container">
-      <button (click)="clearAllTasks()" class="clear-all-button left-button"><fa-icon class="bx"
+      <button (click)="clearAllTasks()" class="clear-all-button left-button" title="Apagar lista"><fa-icon class="bx"
           [icon]="faTrash"></fa-icon>
       </button>
       <button routerLink="/AdiconarTarefas" class="right-button btn"><fa-icon class="text" [icon]="faPlus"></fa-icon>
@@ -13,21 +13,46 @@
       <thead>
         <tr>
           <th>Title</th>
+          <th>Descrição</th>
+          <th>Data de criação</th>
           <th>Status</th>
           <th>Ação</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let task of tasks" [hidden]="task.hidden">
+        <tr *ngFor="let task of getPaginatedTasks()" [hidden]="task.hidden">
           <td>{{ task.title }}</td>
+          <td>{{ task.desc }}</td>
+          <td>{{ task.createdAt | date:'dd/MM/yyyy' }}</td>
           <td>
             <span
-              [ngClass]="{'status': true, 'completed': task.status === 'Concluída', 'pending': task.status === 'A fazer'}">{{
-              task.status }}</span>
+              [ngClass]="{'status': true, 'completed': task.status === 'Concluída', 'pending': task.status === 'A fazer'}">
+              {{ task.status }}
+            </span>
           </td>
-          <td><button (click)="deleteTask(task)" class="delete-button">Excluir</button></td>
+          <td><button (click)="deleteTask(task)" class="delete-button"><fa-icon class="bx"
+                [icon]="faTrash"></fa-icon></button></td>
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="container-flex">
+    <div class="items-per-page-container">
+      <label for="itemsPerPage">Itens por página:</label>
+      <select id="itemsPerPage" [(ngModel)]="itemsPerPage" (change)="setPage(1)">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+      </select>
+    </div>
+    <div class="pagination-container">
+      <button (click)="setPage(currentPage - 1)" [disabled]="currentPage === 1"><fa-icon class="bx"
+        [icon]="faArrowLeft"></fa-icon></button>
+      <button *ngFor="let page of getPaginationArray()" (click)="setPage(page)" [class.active]="currentPage === page">
+        {{ page }}
+      </button>
+      <button (click)="setPage(currentPage + 1)" [disabled]="currentPage === calculateTotalPages()"><fa-icon class="bx"
+        [icon]="faArrowRight"></fa-icon></button>
+    </div>
   </div>
 </div>

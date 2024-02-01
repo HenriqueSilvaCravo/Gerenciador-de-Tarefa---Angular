@@ -48,16 +48,16 @@
         <div class="table-data">
             <div class="order">
                 <div class="head">
-                    <h3>Recent Orders</h3>
+                    <h3>Lista de tarefas</h3>
                     <div class="filter">
                         <div class="search-input">
                             <input type="text" placeholder="Filtre pelo titulo..." id="titleFilter" [(ngModel)]="filterTitle" (ngModelChange)="applyFilters()">
                             <fa-icon class="bx search-icon" [icon]="faSearch"></fa-icon>
                         </div>
-                        <fa-icon class="bx" [icon]="faFilter"></fa-icon>
+                        <!-- <fa-icon class="bx" [icon]="faFilter"></fa-icon> -->
                     </div>
                 </div>
-                <div class="filter">
+                <div class="filter" style="margin-bottom: 30px;">
                     <label for="statusFilter">Filtrar por Status:</label>
                     <select id="statusFilter" [(ngModel)]="filterStatus" (ngModelChange)="applyFilters()">
                         <option value="">Todos</option>
@@ -70,7 +70,8 @@
                     <thead>
                         <tr>
                             <th>Titulo</th>
-                            <th>Date Order</th>
+                            <th>Descrição</th>
+                            <th>Data de criação</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -80,7 +81,8 @@
                                 <!-- <img src="img/people.png"> -->
                                 <p>{{ task.title }}</p>
                             </td>
-                            <td>01-10-2021</td>
+                            <td><p>{{ task.desc }}</p></td>
+                            <td>{{ task.createdAt | date:'dd/MM/yyyy' }}</td>
                             <td>
                                 <span
                                     [ngClass]="{'status': true, 'completed': task.status === 'Concluída', 'pending': task.status === 'A fazer'}">{{
@@ -91,7 +93,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="todo">
+            <!-- <div class="todo">
                 <div class="head">
                     <h3>Todos</h3>
                     <fa-icon class="bx" [icon]="faPlus"></fa-icon>
@@ -119,7 +121,7 @@
                         <fa-icon class="bx" [icon]="faEllipsisVertical"></fa-icon>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
 
         <!-- <div class="todo">

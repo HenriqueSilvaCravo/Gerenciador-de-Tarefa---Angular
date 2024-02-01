@@ -81,3 +81,8 @@ select{
 .add{
     margin-left: 45px;
 }
+
+label {
+  color: #b8b8b8;
+  font-weight: bold;
+}

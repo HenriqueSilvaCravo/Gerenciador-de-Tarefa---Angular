@@ -33,10 +33,12 @@ body{
 	--light-yellow: #FFF2C6;
 	--orange: #FD7238;
 	--light-orange: #FFE0D3;
-    --bg-color: #edf1f7;
+    --bg-color: #dadee2;
+    /* --bg-color: #edf1f7; */
     --text-color: #333;
     --card-color: #f9f9f9;
-    --side-nav:  #1e1e2d;
+    --side-nav:  #0c0c13;
+    /* --side-nav:  #1e1e2d; */
     --input: #edf1f7;
     --side-link: #9d9da6;
     --light-green: #c3f8a4;

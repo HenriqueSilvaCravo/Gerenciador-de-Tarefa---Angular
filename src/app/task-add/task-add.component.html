@@ -2,10 +2,22 @@
     <div class="add-task-card">
         <div class="top">
             <h1 class="titulo">Cadastrar Tarefa</h1>
-            <button class="right-button" routerLink="/Tarefas"><a class="text"><fa-icon class="bx" [icon]="faReply"></fa-icon> voltar</a></button>
+            <button class="right-button" routerLink="/Tarefas"><a class="text"><fa-icon class="bx"
+                        [icon]="faReply"></fa-icon> voltar</a></button>
         </div>
         <hr>
-        <input type="text" [(ngModel)]="newTaskTitle" placeholder="Digite a tarefa....">
+
+        <div>
+            <label class="form-label">Titulo:</label>
+            <input type="text" [(ngModel)]="newTaskTitle" placeholder="Digite a tarefa....">
+        </div>
+
+        <div>
+            <label class="form-label">Descrição:</label>
+            <input type="text" [(ngModel)]="newTaskDesc" placeholder="Digite a descrição....">
+        </div>
+
+        <label>Status:</label>
         <div class="form-group">
             <select [(ngModel)]="newTaskStatus">
                 <option value="A fazer">A fazer</option>

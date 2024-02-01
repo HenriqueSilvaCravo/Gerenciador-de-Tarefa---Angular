@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 
 export class Task {
   title: string = '';
+  desc: string = '';
   completed: boolean = false;
   status: string = 'A fazer'; // Defina como 'A fazer' por padrão
   hidden: boolean | undefined;
+  createdAt: Date = new Date();
 }
 
 @Injectable({
@@ -21,6 +23,7 @@ export class TaskService {
   }
 
   addTask(task: Task): void {
+    task.createdAt = new Date();
     const tasks = this.getTasks();
     tasks.push(task);
     localStorage.setItem(this.localStorageKey, JSON.stringify(tasks));
